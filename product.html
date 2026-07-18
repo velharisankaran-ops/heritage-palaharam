@@ -244,7 +244,7 @@
         
         // Render Hero Image
         const heroContainer = document.getElementById('hero-image-container');
-        heroContainer.innerHTML = `<img class="w-full h-full object-cover" alt="${p.name}" src="assets/images/${p.image_filename}" />`;
+        heroContainer.innerHTML = `<img class="w-full h-full object-cover" alt="${p.name}" src="${p.image_url}" />`;
 
         // Render Details
         const detailsContainer = document.getElementById('product-details-container');
