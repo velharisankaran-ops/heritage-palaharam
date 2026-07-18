@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Heritage Palaharam - Snack Catalog</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;family=Work+Sans:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .paper-grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.04;
+            pointer-events: none;
+            z-index: 100;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-on-surface": "#f2f1ec",
+                        "primary-fixed": "#ffdbd0",
+                        "error": "#ba1a1a",
+                        "primary-container": "#bd5532",
+                        "secondary-container": "#fed8c5",
+                        "background": "#fbf9f4",
+                        "surface-variant": "#e4e2dd",
+                        "inverse-surface": "#30312e",
+                        "outline-variant": "#ddc0b8",
+                        "surface-container": "#f0eee9",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed-dim": "#ffb59e",
+                        "surface-dim": "#dbdad5",
+                        "on-surface": "#1b1c19",
+                        "on-secondary": "#ffffff",
+                        "on-primary-container": "#fffbff",
+                        "tertiary-fixed-dim": "#aed0a1",
+                        "outline": "#8a726b",
+                        "secondary": "#74584a",
+                        "surface": "#fbf9f4",
+                        "primary": "#9d3d1c",
+                        "on-secondary-fixed": "#2a170c",
+                        "tertiary-container": "#5e7c54",
+                        "on-secondary-container": "#795d4e",
+                        "on-surface-variant": "#56423c",
+                        "surface-bright": "#fbf9f4",
+                        "inverse-primary": "#ffb59e",
+                        "on-tertiary-fixed-variant": "#314e2a",
+                        "secondary-fixed-dim": "#e3bfad",
+                        "on-tertiary-container": "#f5ffec",
+                        "secondary-fixed": "#ffdbca",
+                        "on-error-container": "#93000a",
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-high": "#eae8e3",
+                        "on-primary-fixed": "#3a0b00",
+                        "surface-container-highest": "#e4e2dd",
+                        "on-background": "#1b1c19",
+                        "tertiary": "#46633d",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed": "#caecbc",
+                        "surface-tint": "#a0401f",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed-variant": "#802908",
+                        "surface-container-low": "#f5f3ee",
+                        "on-secondary-fixed-variant": "#5a4134",
+                        "on-tertiary-fixed": "#062104"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "20px",
+                        "gutter": "24px",
+                        "base": "8px",
+                        "xs": "4px",
+                        "xl": "80px",
+                        "md": "24px",
+                        "sm": "12px",
+                        "lg": "48px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["\"Source Serif 4\""],
+                        "body-md": ["Work Sans"],
+                        "label-sm": ["Work Sans"],
+                        "label-md": ["Work Sans"],
+                        "display-lg-mobile": ["\"Source Serif 4\""],
+                        "headline-md": ["\"Source Serif 4\""],
+                        "display-lg": ["\"Source Serif 4\""],
+                        "body-lg": ["Work Sans"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.03em", "fontWeight": "500" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-container/30">
+<div class="paper-grain"></div>
+<!-- TopAppBar -->
+<nav class="fixed top-0 left-0 w-full z-50 bg-surface flex justify-between items-center px-margin-mobile h-16 shadow-none">
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center w-10 h-10 hover:bg-surface-container-low transition-colors rounded-full text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-headline-md-mobile text-headline-md-mobile text-primary font-bold">Heritage Palaharam</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex items-center justify-center w-10 h-10 hover:bg-surface-container-low transition-colors rounded-full text-on-surface-variant relative">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+<span class="absolute top-1 right-1 w-4 h-4 bg-primary text-white text-[10px] rounded-full flex items-center justify-center font-bold">3</span>
+</button>
+</div>
+</nav>
+<main class="pt-20 pb-32 min-h-screen px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto">
+<!-- Welcome Header & Search -->
+<header class="mb-lg space-y-md">
+<div class="flex flex-col gap-1">
+<p class="font-label-md text-label-md text-secondary uppercase tracking-widest">Handcrafted with Love</p>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">The Authentic Kerala Pantry</h2>
+</div>
+<div class="relative max-w-2xl">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="search">search</span>
+<input class="w-full pl-12 pr-4 py-4 bg-surface-container border-b-2 border-secondary/40 focus:border-primary outline-none text-body-md placeholder:text-on-surface-variant/60 transition-all rounded-t-xl" placeholder="Search for Ari Unda, Achappam..." type="text"/>
+</div>
+</header>
+<!-- Categories Scroller -->
+<section class="mb-lg overflow-x-auto hide-scrollbar -mx-margin-mobile px-margin-mobile">
+<div class="flex gap-4 items-center">
+<button class="px-6 py-2 bg-primary text-on-primary rounded-full font-label-md text-label-md whitespace-nowrap transition-transform active:scale-95 shadow-sm">All Snacks</button>
+<button class="px-6 py-2 bg-surface-container text-on-surface-variant hover:bg-secondary-container/20 border border-outline/10 rounded-full font-label-md text-label-md whitespace-nowrap transition-all">Rice-based</button>
+<button class="px-6 py-2 bg-surface-container text-on-surface-variant hover:bg-secondary-container/20 border border-outline/10 rounded-full font-label-md text-label-md whitespace-nowrap transition-all">Sweet Delights</button>
+<button class="px-6 py-2 bg-surface-container text-on-surface-variant hover:bg-secondary-container/20 border border-outline/10 rounded-full font-label-md text-label-md whitespace-nowrap transition-all">Savory Crunch</button>
+<button class="px-6 py-2 bg-surface-container text-on-surface-variant hover:bg-secondary-container/20 border border-outline/10 rounded-full font-label-md text-label-md whitespace-nowrap transition-all">Steamed Treats</button>
+</div>
+</section>
+<!-- Heritage Divider -->
+<div class="flex items-center justify-center w-full mb-lg opacity-30">
+<div class="h-[1px] flex-grow bg-secondary/50"></div>
+<span class="mx-4 material-symbols-outlined text-secondary" data-icon="eco">eco</span>
+<div class="h-[1px] flex-grow bg-secondary/50"></div>
+</div>
+<!-- Product Grid -->
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-gutter">
+<!-- Product Card 1: Avulose Podi -->
+<div class="group flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden border border-outline/10 hover:shadow-xl hover:shadow-secondary/5 transition-all duration-300">
+<div class="relative aspect-square overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A top-down, high-quality photograph of Avulose Podi, a traditional Kerala roasted rice flour and coconut snack, served in a rustic brass bowl. The texture is grainy and golden-brown, with visible bits of toasted coconut. The background is a clean, minimalist kitchen setting with warm morning light and a sprig of curry leaves. The aesthetic is artisanal, following a palette of earthy browns and warm creams." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdkCecTYbUrkkR0DBPfcHdWCznvvphpkIp6wfbPMzPwdLQ5En666uZM-jRnPBRE_5JBGYS6iPxZ8YKH-dtmFkpRImHgRgsieMoX-4WpNQRTYSP5sh099IdDdE0_08XbUyUQ534UPd9ayxrsi2O_UAC5mrfcEfHAXNTiGbgL6QvP4eIVPeA6m6niWggne54hWwDivshMF-OpQyJH3LDlBUkeVNArr9YB1ARRyWx9BjWeCGUladasqk9"/>
+<span class="absolute top-2 left-2 px-3 py-1 bg-tertiary-container/90 text-on-tertiary-container rounded-full font-label-sm text-label-sm">Vegan</span>
+</div>
+<div class="p-md flex flex-col flex-grow gap-2">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors">Avulose Podi</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">250g | Traditional Roast</p>
+</div>
+<div class="mt-auto flex items-center justify-between gap-2 pt-2">
+<span class="font-label-md text-label-md text-primary-container text-lg">₹185</span>
+<button class="bg-primary text-on-primary w-10 h-10 rounded-full flex items-center justify-center transition-transform hover:scale-105 active:scale-95 shadow-md">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 2: Ari Unda -->
+<div class="group flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden border border-outline/10 hover:shadow-xl hover:shadow-secondary/5 transition-all duration-300">
+<div class="relative aspect-square overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Close-up shot of Ari Unda, perfectly round roasted rice balls mixed with dark jaggery and coconut. The balls have a slightly rough, tactile texture and a deep, rich brown color. They are arranged artfully on a fresh green banana leaf with soft shadows. The lighting is warm and natural, highlighting the artisanal quality of the snack. A soft-focus background of a traditional Kerala kitchen creates a nostalgic and premium feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBF_OKrwqJLpqo2z4DC0aqKGtuuXEh8tBsUiJfALhOxNXlLJ9IF94Swm0ejAkEJk-BLCZqcPzmIaJ3QWWQpwPkjiMTZYVmjkhkSDuB-8SA334gbdV51T8XdhKqJ7J6KMTRpOyHHsbfnFL07Kp3Y8kH35WlBJSsQvvHledVox7Zw-iSjbVeBY0M8TYI2BIvO7HxDSNDlSlIpz9hPkiu9e_4myywCxSNbzMZ67hpc3pM-tYTBdl-ySEB9"/>
+</div>
+<div class="p-md flex flex-col flex-grow gap-2">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors">Ari Unda</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">200g | Jaggery Sweetened</p>
+</div>
+<div class="mt-auto flex items-center justify-between gap-2 pt-2">
+<span class="font-label-md text-label-md text-primary-container text-lg">₹140</span>
+<button class="bg-primary text-on-primary w-10 h-10 rounded-full flex items-center justify-center transition-transform hover:scale-105 active:scale-95 shadow-md">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 3: Achappam -->
+<div class="group flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden border border-outline/10 hover:shadow-xl hover:shadow-secondary/5 transition-all duration-300">
+<div class="relative aspect-square overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Delicate, golden-yellow Achappam, also known as Rose Cookies, stacked neatly against a minimalist neutral background. The intricate floral lace patterns of the rice-based fritters are crisp and sharp. Soft, diffused lighting accentuates the brittle, crunchy texture of the cookies. The composition is elegant and modern, emphasizing the snack's heritage through a premium boutique aesthetic with warm, earthy undertones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjkA2axixziiezbRq2LDKVNsagqRcmQYik6ptrJbrhv8ybVXFSFxR0eJ6iCKCGryTA9Kiv3fC1E_TYTPUfjKv04dyv2kb8MqSHslyJh9zPKOqTCeMesICZVg7-CixSLe13ucCidUlSxyZI3sy2m0dVpRkO4pG6V4hFcOryRAl9dQJSZhwF0dsUZV41AycFBmd0pk8EGGCQ-Aj1jZPVAeJyM6YsaKX2ChRzrkEhgYJN5Wh_c3ueDLep"/>
+<span class="absolute top-2 left-2 px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full font-label-sm text-label-sm">Best Seller</span>
+</div>
+<div class="p-md flex flex-col flex-grow gap-2">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors">Achappam</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">150g | Crispy Rose Cookies</p>
+</div>
+<div class="mt-auto flex items-center justify-between gap-2 pt-2">
+<span class="font-label-md text-label-md text-primary-container text-lg">₹120</span>
+<button class="bg-primary text-on-primary w-10 h-10 rounded-full flex items-center justify-center transition-transform hover:scale-105 active:scale-95 shadow-md">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 4: Banana Chips -->
+<div class="group flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden border border-outline/10 hover:shadow-xl hover:shadow-secondary/5 transition-all duration-300">
+<div class="relative aspect-square overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Thin, vibrant yellow Banana Chips fried in pure coconut oil, scattered on a dark wooden surface. The chips are perfectly circular and dusted with a hint of salt. One or two chips are standing upright to show their crispness. The lighting is atmospheric, with a single warm spotlight creating depth and drama. The color palette is dominated by rich yellows, deep wood browns, and golden highlights, evoking a premium snack experience." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQYUl0IcwaGaMzTVfSWpOgKaBQDM38LxcGuW3yuLLazKVuwvJca6PJt3irG8y7v1RUE1lSu-NdBVgYT-76YAhKrQzr1QumiTY4PT-HHstacCKqzhbpoU3otmkduoaHHLoiSNeRQww_O0ME-H-IRCygN3kEWJKKqO1LXI92PL7wCROYcvUSEOu55dyhUw5US09sn7wxjHn665C5xY1NpRYdJhZTQYVmpNqjGnSK9rtsAuBj3-3XiBa5"/>
+</div>
+<div class="p-md flex flex-col flex-grow gap-2">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors">Banana Chips</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">500g | Kerala Nendran</p>
+</div>
+<div class="mt-auto flex items-center justify-between gap-2 pt-2">
+<span class="font-label-md text-label-md text-primary-container text-lg">₹210</span>
+<button class="bg-primary text-on-primary w-10 h-10 rounded-full flex items-center justify-center transition-transform hover:scale-105 active:scale-95 shadow-md">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 5: Unniyappam -->
+<div class="group flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden border border-outline/10 hover:shadow-xl hover:shadow-secondary/5 transition-all duration-300">
+<div class="relative aspect-square overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A cluster of warm Unniyappams, small round deep-fried snacks made from rice, jaggery, and banana. They are a dark caramel color with a slightly porous, spongy exterior. They are presented on a white artisanal ceramic plate. The scene is bright and airy with high-key lighting, emphasizing freshness and quality. The overall feel is one of comfort and tradition, presented through a clean, modern lens." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-VBCvOQgqTak-_xptMcNnF3DuBC4z5gQm5vnrBrdGo5EZKX5yhKb2FDBPRhwLXmfpirza6TtMuLOkCGPRMifj55_4R_GaIaH7DynDt_ERLv2qRERhuMLtgJlgQdE0faWFpp74TlkceeuIxdUU_kIA5mI3PY7OupLA3i9fPj87AoHRMTRJ7AROPmlrTLUtpcJu8LPqsfoiZddLwnLiZ3CtZJSHveY9L79MOGxW3s8lurCDO05AVddG"/>
+</div>
+<div class="p-md flex flex-col flex-grow gap-2">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors">Unniyappam</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">10pcs | Jaggery Glazed</p>
+</div>
+<div class="mt-auto flex items-center justify-between gap-2 pt-2">
+<span class="font-label-md text-label-md text-primary-container text-lg">₹150</span>
+<button class="bg-primary text-on-primary w-10 h-10 rounded-full flex items-center justify-center transition-transform hover:scale-105 active:scale-95 shadow-md">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Product Card 6: Murukku -->
+<div class="group flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden border border-outline/10 hover:shadow-xl hover:shadow-secondary/5 transition-all duration-300">
+<div class="relative aspect-square overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Classic savory Murukku, spiraled and crunchy, made from a blend of rice and urad dal flour. The color is a pale gold, with tiny black sesame seeds embedded in the dough. The Murukku are artistically arranged in a minimalist arrangement on a light-colored sandstone tile. The lighting is soft and directional, highlighting the intricate texture of the coils. The aesthetic is clean, premium, and evocative of traditional Indian hospitality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHwHcJoYhYDBBPG6YBuY4QQWKoOXXcGAILpfx153jhj8kiOSK2BHleZDJ8vf_TbNBslpJqVlOcIXUBb-ZqXqBFWftULfjOMyx-f2kk7azYUNjbylpiK9X9IH4tdTiyIGr6_4ipRbTvpRFjOwLr3w_IkyLdQBrx2FarYe-f2_4VPMtWjo18BCI6B7fHXIZGJAelNTWYombfAkbJjEE4aiC3ah0br_pgs-ssqztBN1og5bhdgkqCfUvB"/>
+</div>
+<div class="p-md flex flex-col flex-grow gap-2">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors">Murukku</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">200g | Spiced Rice Twists</p>
+</div>
+<div class="mt-auto flex items-center justify-between gap-2 pt-2">
+<span class="font-label-md text-label-md text-primary-container text-lg">₹95</span>
+<button class="bg-primary text-on-primary w-10 h-10 rounded-full flex items-center justify-center transition-transform hover:scale-105 active:scale-95 shadow-md">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 py-3 bg-surface-container dark:bg-surface-container-highest rounded-t-xl shadow-[0_-2px_10px_rgba(116,88,74,0.05)]">
+<div class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-full px-4 py-1 scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:bg-secondary-container/20 dark:hover:bg-secondary/20 transition-all">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="font-label-sm text-label-sm">Search</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:bg-secondary-container/20 dark:hover:bg-secondary/20 transition-all">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-label-sm text-label-sm">Orders</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-4 py-1 hover:bg-secondary-container/20 dark:hover:bg-secondary/20 transition-all">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</div>
+</nav>
+<script>
+        // Micro-interaction for add buttons
+        document.querySelectorAll('button:has(.material-symbols-outlined[data-icon="add"])').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const icon = this.querySelector('span');
+                icon.innerText = 'done';
+                this.classList.replace('bg-primary', 'bg-tertiary-container');
+                setTimeout(() => {
+                    icon.innerText = 'add';
+                    this.classList.replace('bg-tertiary-container', 'bg-primary');
+                }, 2000);
+            });
+        });
+
+        // Smooth scroll for category buttons
+        document.querySelectorAll('section button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('section button').forEach(b => {
+                    b.classList.replace('bg-primary', 'bg-surface-container');
+                    b.classList.replace('text-on-primary', 'text-on-surface-variant');
+                });
+                this.classList.replace('bg-surface-container', 'bg-primary');
+                this.classList.replace('text-on-surface-variant', 'text-on-primary');
+            });
+        });
+    </script>
+</body></html>
