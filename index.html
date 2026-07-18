@@ -143,10 +143,10 @@
 <h1 class="font-headline-md-mobile text-headline-md-mobile text-primary font-bold">Heritage Palaharam</h1>
 </div>
 <div class="flex items-center gap-2">
-<button class="flex items-center justify-center w-8 h-8 hover:bg-surface-container-low transition-colors rounded-full text-on-surface-variant relative">
+<a href="checkout.html" class="flex items-center justify-center w-8 h-8 hover:bg-surface-container-low transition-colors rounded-full text-on-surface-variant relative">
 <span class="material-symbols-outlined text-xl" data-icon="shopping_cart">shopping_cart</span>
-<span class="absolute top-0 right-0 w-3.5 h-3.5 bg-primary text-white text-[9px] rounded-full flex items-center justify-center font-bold">3</span>
-</button>
+<span id="cart-badge" style="display:none;" class="absolute top-0 right-0 w-3.5 h-3.5 bg-primary text-white text-[9px] rounded-full flex items-center justify-center font-bold">0</span>
+</a>
 </div>
 </nav>
 <main class="pt-20 pb-24 min-h-screen px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto">
@@ -202,18 +202,50 @@
 </div>
 </nav>
     <script>
+        function updateCartBadge() {
+            let cart = JSON.parse(localStorage.getItem('heritage_cart')) || [];
+            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const badge = document.getElementById('cart-badge');
+            if(badge) {
+                badge.innerText = count;
+                badge.style.display = count > 0 ? 'flex' : 'none';
+            }
+        }
+        updateCartBadge();
+
         // Micro-interaction for add buttons (delegated for dynamic content)
         document.addEventListener('click', function(e) {
-            const btn = e.target.closest('button:has(.material-symbols-outlined[data-icon="add"])');
+            const btn = e.target.closest('.add-to-cart-btn');
             if (btn) {
                 e.preventDefault(); // Prevent navigating if wrapped in <a>
+                
+                const productId = btn.getAttribute('data-id');
+                const product = allProducts.find(p => p.id === productId);
+                
+                if(product) {
+                    let cart = JSON.parse(localStorage.getItem('heritage_cart')) || [];
+                    const existing = cart.find(i => i.id === product.id);
+                    if(existing) {
+                        existing.quantity += 1;
+                    } else {
+                        cart.push({
+                            id: product.id,
+                            name: product.name,
+                            price: parseFloat(product.price),
+                            quantity: 1
+                        });
+                    }
+                    localStorage.setItem('heritage_cart', JSON.stringify(cart));
+                    updateCartBadge();
+                }
+
                 const icon = btn.querySelector('span');
                 icon.innerText = 'done';
                 btn.classList.replace('bg-primary', 'bg-tertiary-container');
                 setTimeout(() => {
                     icon.innerText = 'add';
                     btn.classList.replace('bg-tertiary-container', 'bg-primary');
-                }, 2000);
+                }, 1000);
             }
         });
 
@@ -288,7 +320,7 @@
                         </div>
                         <div class="mt-auto flex items-center justify-between gap-2 pt-2">
                             <span class="font-label-md text-label-md text-primary-container text-base">₹${p.price}</span>
-                            <button class="bg-primary text-on-primary w-8 h-8 rounded-full flex items-center justify-center transition-transform hover:scale-105 active:scale-95 shadow-md">
+                            <button data-id="${p.id}" class="add-to-cart-btn bg-primary text-on-primary w-8 h-8 rounded-full flex items-center justify-center transition-transform hover:scale-105 active:scale-95 shadow-md">
                                 <span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
                             </button>
                         </div>

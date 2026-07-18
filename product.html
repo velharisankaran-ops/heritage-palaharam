@@ -176,19 +176,41 @@
     </div>
 
     <!-- Add to Cart -->
-    <button class="flex-1 bg-primary text-on-primary rounded-full py-3 px-6 font-label-md text-label-md flex items-center justify-center gap-2 hover:bg-primary/90 transition-transform active:scale-95 shadow-md">
+    <button onclick="addToCart()" class="flex-1 bg-primary text-on-primary rounded-full py-3 px-6 font-label-md text-label-md flex items-center justify-center gap-2 hover:bg-primary/90 transition-transform active:scale-95 shadow-md">
         <span class="material-symbols-outlined text-[20px]">shopping_bag</span>
         Add to Cart
     </button>
 </div>
 
 <script>
+    let currentProduct = null;
+
     function updateQty(change) {
         const qtyEl = document.getElementById('qty-val');
         let current = parseInt(qtyEl.innerText);
         current += change;
         if(current < 1) current = 1;
         qtyEl.innerText = current;
+    }
+
+    function addToCart() {
+        if(!currentProduct) return;
+        const qty = parseInt(document.getElementById('qty-val').innerText);
+        let cart = JSON.parse(localStorage.getItem('heritage_cart')) || [];
+        
+        const existing = cart.find(i => i.id === currentProduct.id);
+        if(existing) {
+            existing.quantity += qty;
+        } else {
+            cart.push({
+                id: currentProduct.id,
+                name: currentProduct.name,
+                price: parseFloat(currentProduct.price),
+                quantity: qty
+            });
+        }
+        localStorage.setItem('heritage_cart', JSON.stringify(cart));
+        window.location.href = 'checkout.html';
     }
 
     function parseCSV(text) {
@@ -234,6 +256,7 @@
             
             const product = products.find(p => p.id === productId);
             if(product) {
+                currentProduct = product;
                 renderProduct(product);
             } else {
                 document.getElementById('product-details-container').innerHTML = '<p class="text-error p-8 text-center">Product not found.</p>';
