@@ -223,7 +223,7 @@
         const productId = params.get('id') || '1'; // Default to 1 if not provided
         
         try {
-            const response = await fetch('database/products.csv');
+            const response = await fetch('database/products.csv', { cache: 'no-cache' });
             const csvText = await response.text();
             const products = parseCSV(csvText);
             

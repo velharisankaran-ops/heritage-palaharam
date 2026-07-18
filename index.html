@@ -254,7 +254,7 @@
         
         async function loadProducts() {
             try {
-                const response = await fetch('database/products.csv');
+                const response = await fetch('database/products.csv', { cache: 'no-cache' });
                 const csvText = await response.text();
                 allProducts = parseCSV(csvText);
                 renderProducts(allProducts);
